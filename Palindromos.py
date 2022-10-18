@@ -2,13 +2,22 @@ import unittest
 
 
 def Palindromo(palabras):
-    palabras = palabras.lower() and palabras.replace(" ","") and palabras.replace('é','e') and palabras.replace('í','i') and palabras.replace('ó','o') and palabras.replace('ú','u')
+    words = palabras.replace(" ","").replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').lower()
 
-    if palabras == palabras[::-1]:
+    if words == words[::-1]:
         return True
     else:
        return False
 
+class test_palindromo(unittest.TestCase):
+    def test_mayusc(self):
+        self.assertTrue(Palindromo('NeuQuen'))
+    def test_espacios(self):
+        self.assertTrue(Palindromo('anita lava la tina'))
+    def test_nmr(self):
+        self.assertTrue(Palindromo('404'))
+    def test_error(self):
+        self.assertFalse(Palindromo('Hola que tal'))
 
 
 if __name__ == '__main__':
